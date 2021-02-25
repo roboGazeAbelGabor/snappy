@@ -153,12 +153,12 @@ int main() {
   return __builtin_ctzll(0);
 }" HAVE_BUILTIN_CTZ)
 
-check_cxx_source_compiles("
-__attribute__((always_inline)) int zero() { return 0; }
-
-int main() {
-  return zero();
-}" HAVE_ATTRIBUTE_ALWAYS_INLINE)
+#check_cxx_source_compiles("
+#__attribute__((always_inline)) int zero() { return 0; }
+#
+#int main() {
+#  return zero();
+#}" HAVE_ATTRIBUTE_ALWAYS_INLINE)
 
 check_cxx_source_compiles("
 #include <tmmintrin.h>
