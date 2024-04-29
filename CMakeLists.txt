@@ -166,12 +166,12 @@ int main() {
   return 0;
 }" HAVE_BUILTIN_PREFETCH)
 
-check_cxx_source_compiles("
-__attribute__((always_inline)) int zero() { return 0; }
-
-int main() {
-  return zero();
-}" HAVE_ATTRIBUTE_ALWAYS_INLINE)
+#check_cxx_source_compiles("
+#__attribute__((always_inline)) int zero() { return 0; }
+#
+#int main() {
+#  return zero();
+#}" HAVE_ATTRIBUTE_ALWAYS_INLINE)
 
 check_cxx_source_compiles("
 #include <tmmintrin.h>
@@ -278,6 +278,8 @@ target_include_directories(snappy
 )
 set_target_properties(snappy
   PROPERTIES VERSION ${PROJECT_VERSION} SOVERSION ${PROJECT_VERSION_MAJOR})
+
+target_compile_options(snappy PRIVATE -fPIC)
 
 target_compile_definitions(snappy PRIVATE -DHAVE_CONFIG_H)
 if(BUILD_SHARED_LIBS)
